@@ -4,6 +4,11 @@ import random
 class Ball:
     def __init__(self) :
             self.image = load_image('ball41x41.png')
+    def draw(self):
+        self.image.draw(400,30)
+
+    def update(self):
+        pass
 
 
 # Game object class here
@@ -54,6 +59,7 @@ def reset_world():
     global world
     global team
     global grass
+    global ball
     
     running = True
     world =[]
@@ -63,6 +69,9 @@ def reset_world():
     world+= team    
     zombie = Zombie() # Zombie 클래스 이용하여, zombie 객체 생성
     world.append(zombie)
+    ball = Ball()
+    world.append(ball)
+
 
 def update_world():
     for o in world:
