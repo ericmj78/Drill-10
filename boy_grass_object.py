@@ -1,6 +1,10 @@
 from pico2d import *
 import random
 
+class Ball:
+    def __init__(self) :
+            self.image = load_image('ball41x41.png')
+
 
 # Game object class here
 class Grass:
