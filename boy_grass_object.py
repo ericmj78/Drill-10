@@ -16,6 +16,10 @@ class Grass:
         pass
     pass
 
+numbers = [n for n in range(1,10)]
+even_numbers = [n for n in range(1,10+1)if n%2 ==0]
+random_numbers = [random.randint(1,100) for n in range(10)]
+
 class Boy:
     def __init__(self) :
         self.x,self.y = random.randint(100,800),90
@@ -32,12 +36,12 @@ class Boy:
 
 class BigBall:
     def __init__(self) :
-        self.x,self.y = random.randint(300,800),90
+        self.x,self.y = random.randint(0,800),90
         self.frame = random.randint(0,20)
         self.image = load_image('ball41x41.png')
     def update(self) :
         self.frame =(self.frame+1)%1
-        self.y +=5
+        self.y += random.randint(0,20)
     def draw(self) :
         self.image.clip_draw(self.frame*100,0,100,100,self.x,self.y)
 
@@ -45,18 +49,16 @@ class BigBall:
 
 class SmallBall:
     def __init__(self) :
-        self.x,self.y = random.randint(300,800),20
+        self.x,self.y = random.randint(0,800),20
         self.frame = random.randint(0,20)
         self.image = load_image('ball21x21.png')
     def update(self) :
         self.frame =(self.frame+1)%1
-        self.y +=5
+        self.y +=random.randint(0,40)
     def draw(self) :
         self.image.clip_draw(self.frame*100,0,50,50,self.x,self.y)
 
-numbers = [n for n in range(1,10)]
-even_numbers = [n for n in range(1,10+1)if n%2 ==0]
-random_numbers = [random.randint(1,100) for n in range(10)]
+
 
 class Zombie:
     def __init__(self) :
