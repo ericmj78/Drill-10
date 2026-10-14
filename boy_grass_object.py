@@ -1,14 +1,7 @@
 from pico2d import *
 import random
 
-class Ball:
-    def __init__(self) :
-            self.image = load_image('ball41x41.png')
-    def draw(self):
-        self.image.draw(400,30)
-
-    def update(self):
-        pass
+ 
 
 
 # Game object class here
@@ -35,6 +28,19 @@ class Boy:
     def draw(self) :
         self.image.clip_draw(self.frame*100,0,100,100,self.x,self.y)
 
+
+
+class Ball:
+    def __init__(self) :
+        self.x,self.y = random.randint(100,800),90
+        self.frame = random.randint(0,20)
+        self.image = load_image('ball41x41.png')
+    def update(self) :
+        self.frame =(self.frame+1)%1
+        self.y +=5
+    def draw(self) :
+        self.image.clip_draw(self.frame*100,0,100,100,self.x,self.y)
+
 numbers = [n for n in range(1,10)]
 even_numbers = [n for n in range(1,10+1)if n%2 ==0]
 random_numbers = [random.randint(1,100) for n in range(10)]
@@ -57,6 +63,7 @@ class Zombie:
 def reset_world():
     global running
     global world
+    global ballteam
     global team
     global grass
     global ball
@@ -65,17 +72,24 @@ def reset_world():
     world =[]
     grass = Grass() # Grass 클래스 이용하여, grass 객체 생성
     world.append(grass)
+    
     team = [Boy() for i in range(11)] # Boy 클래스 이용하여, boy 객체 11개 생성
     world+= team    
+
     zombie = Zombie() # Zombie 클래스 이용하여, zombie 객체 생성
     world.append(zombie)
-    ball = Ball()
-    world.append(ball)
+
+    ballteam = [Ball() for i in range(11)]
+    world+= ballteam
+
+    
 
 
 def update_world():
     for o in world:
         o.update()
+
+    
 
     pass
 
