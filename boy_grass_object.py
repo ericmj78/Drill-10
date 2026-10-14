@@ -37,11 +37,11 @@ class Boy:
 class BigBall:
     def __init__(self) :
         self.x,self.y = random.randint(0,800),90
-        self.frame = random.randint(0,20)
+        self.frame = random.randint(0,7)
         self.image = load_image('ball41x41.png')
     def update(self) :
         self.frame =(self.frame+1)%1
-        self.y += random.randint(0,20)
+        self.y += random.randint(0,30)
     def draw(self) :
         self.image.clip_draw(self.frame*100,0,100,100,self.x,self.y)
 
@@ -50,11 +50,11 @@ class BigBall:
 class SmallBall:
     def __init__(self) :
         self.x,self.y = random.randint(0,800),20
-        self.frame = random.randint(0,20)
+        self.frame = random.randint(0,7)
         self.image = load_image('ball21x21.png')
     def update(self) :
         self.frame =(self.frame+1)%1
-        self.y +=random.randint(0,40)
+        self.y += random.randint(0,30)
     def draw(self) :
         self.image.clip_draw(self.frame*100,0,50,50,self.x,self.y)
 
