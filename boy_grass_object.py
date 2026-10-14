@@ -30,9 +30,9 @@ class Boy:
 
 
 
-class Ball:
+class BigBall:
     def __init__(self) :
-        self.x,self.y = random.randint(100,800),90
+        self.x,self.y = random.randint(300,800),90
         self.frame = random.randint(0,20)
         self.image = load_image('ball41x41.png')
     def update(self) :
@@ -40,6 +40,19 @@ class Ball:
         self.y +=5
     def draw(self) :
         self.image.clip_draw(self.frame*100,0,100,100,self.x,self.y)
+
+
+
+class SmallBall:
+    def __init__(self) :
+        self.x,self.y = random.randint(300,800),20
+        self.frame = random.randint(0,20)
+        self.image = load_image('ball21x21.png')
+    def update(self) :
+        self.frame =(self.frame+1)%1
+        self.y +=5
+    def draw(self) :
+        self.image.clip_draw(self.frame*100,0,50,50,self.x,self.y)
 
 numbers = [n for n in range(1,10)]
 even_numbers = [n for n in range(1,10+1)if n%2 ==0]
@@ -63,7 +76,8 @@ class Zombie:
 def reset_world():
     global running
     global world
-    global ballteam
+    global bigballteam
+    global smallballteam
     global team
     global grass
     global ball
@@ -79,8 +93,11 @@ def reset_world():
     zombie = Zombie() # Zombie 클래스 이용하여, zombie 객체 생성
     world.append(zombie)
 
-    ballteam = [Ball() for i in range(11)]
-    world+= ballteam
+    bigballteam = [BigBall() for i in range(10)]
+    world+= bigballteam
+
+    smallballteam = [SmallBall() for i in range(10)]
+    world+= smallballteam
 
     
 
